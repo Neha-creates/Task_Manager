@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        @media screen {
+            body{
+                margin: 0;
+                padding: 0;
+            }
+        }
+        .inputForm{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+        thead>tr{
+            border: 1px solid;
+        }
+        thead>tr>th{
+            border: 1px solid;
+        }
+        table{
+            display: inline-table;
+            align-content: center;
+            background-color: antiquewhite;
+        }
+        #div{
+            text-align: center;
+        }
+        #check:hover{
+            width: 130%;
+        }
+    </style>
+</head>
+<body>
+    <div class="inputForm">
+    <h2>Task Input Form: </h2>
+    <input type="text" id="name" placeholder="Type your task"><br>
+    <input type="text" id="des" placeholder="Add description"><br>
+    <input type="date" required id="date"><br>
+    <select name="category" id="categoryLabel">
+        <option value="select">Category</option>
+        <option value="work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="shopping">Shopping</option>
+        <option value="other">Other</option>
+    </select>
+    <button id="addTask" onclick="addTodo()">Add Task</button>
+    </div>
+    <div id="div">
+        <h2 id="taskL">Task List Section</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task Title & Description</th>
+                    <th>Due Date</th>
+                    <th>Category Label</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    function addTodo(){
+        let container = document.querySelector('#div');
+        let taskName = document.getElementById('name').value;
+        let taskD = document.getElementById('des').value;
+        let dueDate = document.getElementById('date').value;
+        let category = document.getElementById('categoryLabel').value;
+        let table = document.querySelector('table');
+        let row = document.createElement('tbody')
+        row.innerHTML = `
+            <tr class='newTask'>
+                <td>${taskName}<br>(${taskD})</td>
+                <td>${dueDate}</td>
+                <td>${category}</td>
+                <td>${`<input type='checkbox' id="check"> `}</td>
+            </tr>
+        `;
+        table.appendChild(row);
+        container.appendChild(table);
+        let newTask = document.querySelector('.newTask').value;
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.push(newTask);
+        localStorage.setItem('task',JSON.stringify(tasks));
+    }
+</script>
