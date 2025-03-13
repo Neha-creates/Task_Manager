@@ -1,0 +1,26 @@
+<!--Carbon Intensity Tracker-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIT</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    async function showData(){
+        try {
+            let res = await fetch('https://api.carbonintensity.org.uk/intensity/date');
+            let data = await res.json();
+            //let pro = JSON.stringify(data, null, 2);
+            let inTensity = data.data[0].intensity;
+            console.log(inTensity)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    showData();
+</script>
