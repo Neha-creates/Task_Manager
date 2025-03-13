@@ -1,0 +1,31 @@
+<!--Carbon Intensity Tracker-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIT</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h2>Carbon Intensity Data</h2>
+    <label for="date">Select Date:</label>
+    <input type="date" id="date">
+    <button onclick="showData()">Fetch Data</button>
+    
+    <table id="data-table" style="display:none;">
+        <thead>
+            <tr>
+                <th>Time Period</th>
+                <th>Intensity (gCO2/kWh)</th>
+                <th>Forecast</th>
+                <th>Actual</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+</html>
+<script src="/script.js"></script>
